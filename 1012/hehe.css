@@ -1,0 +1,16 @@
+h1{
+    color:rgb(86, 129, 11);
+    font-size:x-large;
+}
+p{
+ font-size: small;
+}
+#special{
+        background-color: aqua;
+    }
+.title{
+    color:hotpink
+}
+a:hover{
+    font-size: larger;
+}

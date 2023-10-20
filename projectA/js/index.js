@@ -5,7 +5,8 @@ let y = 200;
 
 
 function setup() {
-  createCanvas(400, 400);
+  let canvas = createCanvas(400, 400);
+  canvas.parent("p5-canvas");
   background(220);
   
   g = createGraphics(400, 400); // off-canvas

@@ -1,0 +1,33 @@
+body{
+    background-color: aqua;
+}
+.header{
+  background-color: aquamarine;
+  height:150px
+} 
+.navBar{
+  background-color:gray
+}
+.project-Box
+{
+  back 
+}.title{
+
+    text-align: center;
+
+}
+#p5-canvas{
+  
+  border: 1rem solid;
+  width: 400px;
+  padding: 30px;
+  margin: 30px;
+  position: fixed;
+/* center the element */
+right: 0;
+left: 0;
+margin-right: auto;
+margin-left: auto;
+/* give it dimensions */
+min-height: 10em;
+}

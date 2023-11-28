@@ -11,9 +11,11 @@ h4,
 h5,
 h6,
 p {
-  margin: 0;
+  margin: 100;
   padding: 0;
 }
+
+
 
 .container-landing-page {
   width: 100%;
@@ -26,12 +28,74 @@ p {
   flex-direction: column;
 }
 
-.main-container {
-  background-color: lightgray;
+
+a:hover {
+  color: rgb(247, 8, 127);
+}
+
+
+
+.Title {
+  font-size: 100px;
+  font-family: 'Arial', sans-serif;
+  margin-bottom 0px;
+  margin:0px;
+  background-image: linear-gradient(red, #ff9900, #66ffff);
+
+  -webkit-background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+a {
+  color: black;
+  font-family: 'Pacifico', cursive;
+  font-family: 'Vina Sans', sans-serif;
 
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  font-size: 80px;
+  ;
+
+}
+
+h1 {
+  margin-bottom: 0px;
+}
+.flex-container {
+ display:flex;
+}
+p {
+  margin-top: 0px;
+}
+.main-container2{
+ float:right;
+ margin:50px;
+}
+.main-container{
+  float:left;
+  margin:50px;
+}
+
+.left {
+  margin-right: 20px;
+
+  float: left;
+  width: 20%;
+  padding: 20px;
+  border: 2px;
+
+  background-color: aqua;
+}
+
+.right {
+  background-color: blue;
+  float: right;
+  width: 50%;
+  padding: 20px;
+  border: 2px;
 }
 
 .interface-container {
@@ -51,3 +115,78 @@ justify-content
 align-items
 align-content
 */
+
+
+
+@import url("https://fonts.googleapis.com/css?family=Merienda+One");
+
+html {
+  background-color: #000;
+  background-image: url(https://images.unsplash.com/photo-1531972497489-8eb337acf6e5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=193456e9385b553747a5e0f0cbc7badb&auto=format&fit=crop&w=1334&q=80);
+  background-size: cover;
+  height: 100%;
+  background-repeat: no-repeat;
+}
+
+
+more-snow:before,
+more-snow:after,
+.more-snow:before,
+.more-snow:after {
+  content: "";
+  position: fixed;
+  top: -3000%;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.01);
+  background-image: url(http://www.freepngimg.com/download/winter_snow/4-2-white-snow-png.png);
+  background-size: 30%;
+  -webkit-animation-name: MOVE-BG;
+  -webkit-animation-duration: 500s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+}
+
+.more-snow:before {
+  filter: blur(6px);
+  opacity: 0.8;
+}
+
+.more-snow:after {
+  filter: blur(1px);
+  top: -1500%;
+  background-image: url(http://www.freepngimg.com/download/winter_snow/4-2-white-snow-png.png);
+  background-size: 90%;
+  -webkit-animation-duration: 200s;
+  animation-duration: 200s;
+}
+
+.more-snow:before {
+  filter: blur(4px);
+  opacity: 0.8;
+  top: -2500%;
+  background-size: 60%;
+  -webkit-animation-duration: 400s;
+  animation-duration: 400s;
+}
+
+.more-snow:after {
+  filter: blur(2px);
+  opacity: 0.8;
+  top: -2000%;
+  background-image: url(https://laviwebfiles.com/stage/codepen/4-2-white-snow-png.png);
+  background-size: 70%;
+  -webkit-animation-duration: 300s;
+  animation-duration: 300s;
+}
+
+@-webkit-keyframes MOVE-BG {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(70%);
+  }
+}

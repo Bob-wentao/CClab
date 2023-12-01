@@ -1,3 +1,11 @@
+html {
+  background-color: #000;
+  background-image: url(https://images.unsplash.com/photo-1531972497489-8eb337acf6e5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=193456e9385b553747a5e0f0cbc7badb&auto=format&fit=crop&w=1334&q=80);
+  background-size: cover;
+  height: 100%;
+  background-repeat: no-repeat;
+}
+
 html,
 body {
   height: 100%;
@@ -33,13 +41,16 @@ a:hover {
   color: rgb(247, 8, 127);
 }
 
-
+.hh {
+  margin: 0;
+  padding: 0;
+}
 
 .Title {
   font-size: 100px;
   font-family: 'Arial', sans-serif;
-  margin-bottom :0px;
-  margin:0px;
+  margin-bottom: 0px;
+  margin: 0px;
   background-image: linear-gradient(red, #ff9900, #66ffff);
 
   -webkit-background-clip: text;
@@ -60,6 +71,7 @@ a {
   ;
 
 }
+
 /*body{
   width:50px;
   height:50px;
@@ -69,50 +81,63 @@ a {
   flex-direction: column;
   
 }
+*/
 
-h1 {
-  margin-bottom: 0px;
-}
 .flex-container {
- display:flex;
-}
-p {
-  margin-top: 0px;
-}
-.main-container2{
- float:right;
- margin:50px;
-}
-.main-container{
-  float:left;
-  margin:50px;
+  display: flex;
+
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
 }
 
-.left {
-  margin-right: 20px;
 
-  float: left;
-  width: 20%;
-  padding: 20px;
-  border: 2px;
 
-  background-color: aqua;
-}
-
-.right {
-  background-color: blue;
-  float: right;
-  width: 50%;
-  padding: 20px;
-  border: 2px;
-}
-
-.interface-container {
-  background-color: gray;
-
+.main-container {
   display: flex;
   justify-content: center;
+
   align-items: center;
+
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  height: 100%;
+
+}
+
+.interface-button {
+  z-index: 100;
+
+}
+
+
+
+.interface-container {
+  z-index: 100;
+  /* background-color: gray; */
+
+  display: flex;
+  justify-content: top;
+  margin-top: 30px;
+  margin-left: 30px;
+  margin-right: 30px;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}
+
+.interface-button:hover {
+  color: red;
+  background-color: rgb(107, 56, 56);
+}
+
+.interface-button {
+  margin-top: 50px;
+  font-size: 24px;
+  height: 15vh;
+  width: 35vw;
 }
 
 /* FLEXBOX PROPERTIES */
@@ -129,13 +154,7 @@ align-content
 
 @import url("https://fonts.googleapis.com/css?family=Merienda+One");
 
-html {
-  background-color: #000;
-  background-image: url(https://images.unsplash.com/photo-1531972497489-8eb337acf6e5?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=193456e9385b553747a5e0f0cbc7badb&auto=format&fit=crop&w=1334&q=80);
-  background-size: cover;
-  height: 100%;
-  background-repeat: no-repeat;
-}
+
 
 
 .more-snow:before,
@@ -198,4 +217,12 @@ html {
   to {
     transform: translateY(70%);
   }
+}
+
+.link {
+  z-index: 100;
+}
+
+.button {
+  z-index: 100;
 }

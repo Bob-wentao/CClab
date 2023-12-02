@@ -1,7 +1,7 @@
 let bgColor;
 let mySound;
 
-function preload(){
+function preload() {
   mySound = loadSound('video/snow1.mp3')
 }
 
@@ -36,7 +36,7 @@ class Star {
 
   update() {
     this.z = this.z - this.speed;
-    
+
     if (this.z < 1) {
       this.z = width;
       this.x = random(width);
@@ -50,15 +50,15 @@ class Star {
     let sx = map(this.x / this.z, 0, 1, 0, width);
     let sy = map(this.y / this.z, 0, 1, 0, height);
     let r = map(this.z, 0, width, 16, 0);
-    
+
     stroke(255);
-    ellipse(sx, sy,r,r); 
-    
+    ellipse(sx, sy, r, r);
+
     let px = map(this.x / this.pz, 0, 1, 0, width);
     let py = map(this.y / this.pz, 0, 1, 0, height);
-    
+
     this.pz = this.z;
-    
+
     stroke(255);
     line(px, py, sx, sy);
   }

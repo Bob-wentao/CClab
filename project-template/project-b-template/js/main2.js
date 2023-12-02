@@ -1,8 +1,22 @@
+let snowflakeCounter = 0;
+let scenevideo;
+let displayText = false;
+let startTime;
+let duration = 3500; // 文字显示持续时间（毫秒）
+let initialFontSize = 40;
+let textColor = 255;
+let snowflakeFrequency = 10
+let maxSnowflakes = 100;
+let snowt = 1
 let snowflakes = []; // array to hold snowflake objects
 let x, y;
 let ball = [];
+let pan5 = 0
 let background1, background2;
 let graphic1;
+let gift2y = 0
+let sleighy = 0;
+let bian5 = 0
 let scene = 1;
 let xPos = 200;
 let yPos = 800;
@@ -19,6 +33,8 @@ let blink = false;
 let blinkTimer = 0;
 let speeds = 2;
 let bacg;
+let bacg2
+let sockxx = 150
 let handx, handy;
 let sum = 0;
 let snowmx = 900;
@@ -41,36 +57,54 @@ let vid;
 let cloud;
 let buttonColor = 200;
 let cloudpan = 0;
-let scenechange = 1;
+let scenechange = 2;
 let calcu = 0;
 let speed = 2;
 let circlepan = 0;
-let snowsum = 0;
+let snowsum = 10000;
 let santas;
 let sanx;
 let sany;
+let sleigh
+let snowmanxx
+let appearanceTime; // 图像出现的时间
+let showImage = false;
+
+let sleighpan = 0
 let sanspeed = 2; // 控制santas的移动速度
 
 let giftX1, giftY1, giftSpeed1;
 let giftX2, giftY2, giftSpeed2;
 let giftX3, giftY3, giftSpeed3;
 let giftX4, giftY4, giftSpeed4;
+let snowsound;
 function preload() {
+
+  sleigh = loadImage('video/sleigh.webp')
+  snowsound = loadSound('video/snow1.mp3')
   bacg = loadImage("video/Christ.jpg");
+  bacg2 = loadImage("video/Christ2.png");
   santas = loadImage('video/santas.png');
   gift = loadImage('video/gift.png')
   gift2 = loadImage('video/gift2.jpg')
   gift3 = loadImage('video/gift3.jpg')
   gift4 = loadImage('video/gift4.jpg')
   vid = createVideo(["video/sleep.mp4"]);
+  sock = loadImage('video/sock1.png')
+  sock2 = loadImage('video/sock2.png')
+  scenevideo = createVideo(["video/scene5.mp4"])
   vid.hide(); // Hide the video element
+  scenevideo.hide()
+
 }
 function setup() {
+
+  setAppearanceTime();
   let canvas = createCanvas(1000, 700);
   canvas.parent('canvas-container2');
   sanx = width / 2;
   sany = 0; // 设置santas的sany坐标
-
+  snowmanxx = random(width)
   // 初始化每个gift的位置和速度
   giftX1 = random(width); // 随机设置sanx坐标
   giftY1 = 10; // 在顶部随机设置sany坐标
@@ -104,10 +138,13 @@ function setup() {
     ball.push(new Ball());
   }
 }
-
+let t = 1
 function draw() {
-  console.log(calcu);
+
+
   if (scenechange == 1) {
+    snowsound.play()
+
     background(255);
 
     vid.loop();
@@ -118,9 +155,9 @@ function draw() {
     drawCloud(383, 152, 30, 20, 10);
     drawCloud(459, 113, 60, 20, 10);
     drawCloud(550, 45, 120, 40, 30);
-
+    image(sock, 170, 202, 200, 250)
     if (cloudpan == 1) {
-      let t = frameCount * 0.05;
+      t += 0.1;
       push();
       translate(550, 45);
       scale(t);
@@ -141,7 +178,7 @@ function draw() {
       if (d < 50) {
         // 设定一个阈值，当小于该值时，表示碰撞发生
         snowflakes.splice(i, 1);
-        snowsum += 1;
+        snowsum += 10;
         // 移除碰撞到的雪花
       }
     }
@@ -149,12 +186,13 @@ function draw() {
     // vid.loop
     // blendMode(BLEND);
     background(0); // 设置混合模式为普通混合
-    image(bacg, 0, 0);
-    if (snowsum >= 200) {
+    background(bacg);
+    if (snowsum >= 170) {
       hat();
       nose();
       scarf();
       stick();
+      sleighd();
       for (let i = 0; i < ball.length; i++) {
         ball1 = ball[i];
         ball1.update();
@@ -169,13 +207,13 @@ function draw() {
         }
       }
     }
-    if (snowsum >= 30) {
+    if (snowsum >= 50) {
       ellipse(snowmx, snowmy, 200, 200);
     }
-    if (snowsum >= 70) {
+    if (snowsum >= 90) {
       ellipse(snowmx, snowmy - 125, 150, 150);
     }
-    if (snowsum >= 150) {
+    if (snowsum >= 130) {
       ellipse(snowmx, snowmy - 225, 100, 100);
     }
     if (circlepan >= 1) {
@@ -193,11 +231,7 @@ function draw() {
     if (circlepan >= 5) {
       circleb(snowmx + 15, snowmy - 235);
     }
-    if (snowsum >= 90) {
-      push();
 
-      pop();
-    }
 
     if (hatpan == 1) {
       push();
@@ -232,8 +266,8 @@ function draw() {
       push();
       strokeWeight(0);
       fill(0, 0, 255);
-      rect(snowmx - 45, snowmy - 150, 90, 20);
-      rect(snowmx - 45, snowmy - 150, 20, 80);
+      rect(snowmx - 45, snowmy - 190, 90, 20);
+      rect(snowmx - 45, snowmy - 190, 20, 80);
       pop();
     }
     if (stickpan == 1) {
@@ -244,11 +278,18 @@ function draw() {
       line(snowmx + 70, snowmy - 125, snowmx + 150, snowmy - 150);
       pop();
     }
+    if (sleighpan == 1) {
+      image(sleigh, snowmx - 150, snowmy, 300, 300)
+    }
     // blendMode(ADD); // 设置混合模式为添加混合
     if (ball.length < 5) {
       ball.push(new Ball());
     }
-    if ((calcu == 4)) {
+    if (snowmy < 0) {
+      calcu = 0;
+      scenechange = 4
+    }
+    if ((calcu == 5)) {
       push();
       noFill();
       strokeWeight(5);
@@ -259,11 +300,17 @@ function draw() {
       pop();
     }
 
-    let t = frameCount / 60; // update time
-    // background(0)
-    // create a random number of snowflakes each frame
-    for (let i = 0; i < random(5); i++) {
-      snowflakes.push(new Snowflake()); // append snowflake object
+    let t = frameCount / 20; // update time
+
+    snowflakeCounter++;
+    if (snowflakeCounter >= snowflakeFrequency && snowflakes.length < maxSnowflakes) {
+      snowflakes.push(new Snowflake());
+      snowflakeCounter = 0; // Reset the counter
+    }
+
+    // Remove older snowflakes if the maximum limit is reached
+    while (snowflakes.length > maxSnowflakes) {
+      snowflakes.splice(0, 1); // Remove the oldest snowflake
     }
 
     // loop through snowflakes with a for..of loop
@@ -337,53 +384,138 @@ function draw() {
       // Check collision between stick and child
       stickpan = 1;
       calcu += 1;
-      (stickx = -500000), (sticky = -500000);
+      stickx = -500000;
+      sticky = -500000;
+    }
+    let d6 = dist(xPos, yPos, 180, sleighy)
+    if (d6 <= 100) {
+      sleighpan = 1;
+      calcu += 1
+      sleighy = -100000
     }
   }
-  if (snowmy < 0) {
 
-    scenechange = 3
+
+  if (scenechange == 4) {
+
+    pan5 += 1
+    if (pan5 >= appearanceTime) {
+      showImage = true
+    }
+
+
+    background(bacg2)
+    image(sock, sockxx, 600, 100, 100)
+    drawSnowman(snowmanxx, 80)
+    if (snowmanxx >= width) {
+
+      snowt = 0
+    }
+    if (snowmanxx <= 0) {
+      snowt = 1
+    }
+    if (snowt == 0) {
+      snowmanxx -= 10
+    }
+    if (snowt == 1) {
+      snowmanxx += 10
+    }
+    image(gift2, snowmanxx, 100 + gift2y, 50, 50);
+    if (showImage) {
+      gift2y += 5
+
+    }
+    if (!displayText) {
+      displayText = true;
+      startTime = millis();
+    }
+
+    if (displayText) {
+      let currentTime = millis() - startTime;
+
+      // 文字渐变效果
+      if (currentTime < duration) {
+        let textSizeProgress = map(currentTime, 0, duration, initialFontSize, 32);
+        let colorProgress = map(currentTime, 0, duration, 0, 255);
+        let alphaProgress = map(currentTime, duration * 0.8, duration, 255, 0);
+
+        // 更新文字大小、颜色和透明度
+        textSize(textSizeProgress);
+        fill(textColor, colorProgress, 100, alphaProgress);
+        textAlign(CENTER, CENTER);
+        text("Attention! You have only one chance to catch the gift!!", width / 2, height / 2);
+      }
+    }
+
+    let d9 = dist(sockxx, 600, snowmanxx, 100 + gift2y)
+    if (d9 <= 50) {
+      scenechange = 5
+      gift2y = -100
+    }
+    if (100 + gift2y >= height) {
+      scenechange = 6
+    }
+    if (keyIsDown(LEFT_ARROW)) {
+      sockxx -= 9 // 按下左箭头键，物体向左移动
+    }
+    if (keyIsDown(RIGHT_ARROW)) {
+      sockxx += 9 // 按下右箭头键，物体向右移动
+    }
   }
-  if (scenechange == 3) {
-    background(220)
-    image(santas, sanx, sany, 100, 50);
 
-    // 控制santas来回移动
-    sanx += sanspeed;
+  if (scenechange == 6) {
+    vid.loop();
+    // Draw the video only if the cloudpan flag is not set
+    image(vid, 0, 0, width, height);
 
-    // 边界检测，使santas在达到边缘时返回
-    if (sanx >= width) {
-      sanx = 0
+    // Draw clouds
+    drawCloud(383, 152, 30, 20, 10);
+    drawCloud(459, 113, 60, 20, 10);
+    drawCloud(550, 45, 120, 40, 30);
+    push()
+    scale(bian5)
+    translate(170, 202)
+    bian5 += 0.01
+
+    image(sock, 0, 0, 200, 250)
+    pop()
+    if (bian5 >= 1.5) {
+      scenechange = 7
+    }
+  }
+  if (scenechange == 7) {
+    background(0)
+    textSize(50)
+    text("Click the button to try again!", 200, 200)
+  }
+  if (scenechange == 8) {
+    scenevideo.loop();
+    // Draw the video only if the cloudpan flag is not set
+    image(scenevideo, 0, 0, width, height);
+  }
+
+
+  if (scenechange == 5) {
+
+    vid.loop();
+    // Draw the video only if the cloudpan flag is not set
+    image(vid, 0, 0, width, height);
+
+    // Draw clouds
+    drawCloud(383, 152, 30, 20, 10);
+    drawCloud(459, 113, 60, 20, 10);
+    drawCloud(550, 45, 120, 40, 30);
+    push()
+    scale(bian5)
+    translate(170, 202)
+    bian5 += 0.01
+
+    image(sock2, 0, 0, 200, 250)
+    pop()
+    if (bian5 >= 1.5) {
+      scenechange = 8
     }
 
-    // 更新和绘制每个gift
-    image(gift, giftX1, giftY1, 30, 30); // 这里可以调整gift的大小
-    giftY1 += giftSpeed1; // 更新sany坐标，让gift1下落
-    if (giftY1 >= height) {
-      giftX1 = random(width); // 随机设置sanx坐标
-      giftY1 = 10; // 在顶部随机设置sany坐标
-    }
-
-    image(gift2, giftX2, giftY2, 30, 30);
-    giftY2 += giftSpeed2;
-    if (giftY2 >= height) {
-      giftX2 = random(width);
-      giftY2 = 10;
-    }
-
-    image(gift3, giftX3, giftY3, 30, 30);
-    giftY3 += giftSpeed3;
-    if (giftY3 >= height) {
-      giftX3 = random(width);
-      giftY3 = 10;
-    }
-
-    image(gift4, giftX4, giftY4, 30, 30);
-    giftY4 += giftSpeed4;
-    if (giftY4 >= height) {
-      giftX4 = random(width);
-      giftY4 = 10;
-    }
 
   }
 }
@@ -394,7 +526,7 @@ class Snowflake {
     this.posX = 0;
     this.posY = random(-50, 0);
     this.initialangle = random(0, 2 * PI);
-    this.size = random(2, 5);
+    this.size = random(10, 15);
 
     // radius of snowflake spiral
     // chosen so the snowflakes are uniformly spread out in area
@@ -447,8 +579,10 @@ class Ball {
 
 function keyPressed() {
   if (keyCode === LEFT_ARROW) {
+
     isMovingLeft = true;
   } else if (keyCode === RIGHT_ARROW) {
+
     isMovingRight = true;
   } else if (keyCode === UP_ARROW && !isJumping) {
     isJumping = true;
@@ -661,4 +795,87 @@ function circleb(x, y) {
     h = (h + 0.8) % 320;
   }
   pop();
+}
+function sleighd() {
+  sleighy += 2
+  image(sleigh, 180, sleighy, 100, 100)
+  if (sleighy >= height) {
+    sleighy = 0
+  }
+
+}
+function drawSnowman(snowmx2, snowmy2) {
+  // snowman
+  push()
+  translate(snowmx2, snowmy2)
+  fill(255);
+  scale(0.3)
+
+  ellipse(0, 0, 200, 200);
+  ellipse(0, 0 - 125, 150, 150);
+  ellipse(0, 0 - 225, 100, 100);
+
+  // hat
+  fill(0);
+  rect(0 - 35, 0 - 360, 70, 100);
+  ellipse(0, 0 - 260, 100, 10);
+
+  // eyes
+  ellipse(0 - 15, 0 - 235, 5, 5);
+  ellipse(0 + 15, 0 - 235, 5, 5);
+
+  // carrot
+  fill(255, 165, 0);
+  triangle(0, 0 - 225, 0, 0 - 215, 0 + 40, 0 - 200);
+
+  // arms
+  stroke(139, 69, 19);
+  strokeWeight(5);
+  line(0 - 70, 0 - 125, 0 - 150, 0 - 150);
+  line(0 + 70, 0 - 125, 0 + 150, 0 - 150);
+
+  // scarf
+  strokeWeight(0);
+  fill(0, 0, 255);
+  rect(0 - 45, 0 - 190, 90, 20);
+  rect(0 - 45, 0 - 190, 20, 80);
+  push();
+  noFill();
+  strokeWeight(5)
+  stroke(10);
+  arc(0, 0 - 215, 80, 50, 0.2, PI - 0.2); // 在眼睛下方绘制弧形作为笑脸
+  pop();
+  image(sleigh, 0 - 150, 0, 300, 300)
+  // buttons
+  fill(0);
+  push();
+  colorMode(HSB, 360, 100, 100);
+  noStroke();
+  let h = random(320)
+  for (let r = 10; r > 0; --r) {
+    fill(h, 100, 100, r * 8); // 设置拖尾粒子的透明度
+    ellipse(0, 0 - 110, r * 3, r * 3);
+    h = (h + 0.8) % 320;
+  }
+  pop();
+  circleb(0, 0 - 80)
+  ellipse(0, 0 - 80, 7, 7);
+  ellipse(0, 0 - 50, 7, 7);
+  pop()
+}
+function showText() {
+  displayText = true;
+  startTime = millis();
+}
+
+function hideText() {
+  displayText = false;
+}
+function setAppearanceTime() {
+  // 产生一个随机的出现时间（在 1 到 5 秒之间）
+  let seconds = int(random(9, 11));
+  appearanceTime = seconds * 30; // 将秒数转换为帧数（1秒 = 60帧）
+}
+function tryagain() {
+  scenechange = 1
 }

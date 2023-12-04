@@ -64,7 +64,7 @@ let scenechange = 1;
 let calcu = 0;
 let speed = 2;
 let circlepan = 0;
-let snowsum = 10000;
+let snowsum = 0;
 let santas;
 let sanx;
 let sany;
@@ -151,7 +151,7 @@ function draw() {
     let currentTime = millis();
 
     // 如果当前时间与开始时间的差值小于2秒（2000毫秒），则显示文字
-    if (currentTime - startTime2 < 3000) {
+    if (currentTime - startTime2 < 7000) {
       displayText2 = true;
     } else {
       displayText2 = false;

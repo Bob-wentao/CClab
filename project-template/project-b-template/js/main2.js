@@ -175,7 +175,7 @@ function draw() {
       fill(30, 20, 30);
       textSize(32);
       text("It is a Christmas Eve ", 520, 70);
-      text("little boy was sleeping ", 520, 100);
+      text("little boy is sleeping ", 520, 100);
       text("He wants to get gifts ", 520, 130);
       text("Let's help him !", 520, 160);
     }

@@ -145,7 +145,7 @@ function setup() {
 }
 let t = 1
 function draw() {
-
+  console.log(scenechange)
 
   if (scenechange == 1) {
     snowsound.play()
@@ -190,6 +190,7 @@ function draw() {
       pop();
       if (t >= 12) {
         scenechange = 2;
+        t = 0;
         vid.stop();
       }
     }
@@ -463,7 +464,7 @@ function draw() {
         let colorProgress = map(currentTime, 0, duration, 0, 255);
         let alphaProgress = map(currentTime, duration * 0.8, duration, 255, 0);
 
-        // 更新文字大小、颜色和透明度
+
         textSize(textSizeProgress);
         fill(textColor, colorProgress, 100, alphaProgress);
         textAlign(CENTER, CENTER);
@@ -906,7 +907,8 @@ function setAppearanceTime() {
   appearanceTime = seconds * 30; // 将秒数转换为帧数（1秒 = 60帧）
 }
 function tryagain() {
-  scenechange = 1
+  scenechange = 1;
+  console.log("efs")
 }
 function displayTextFunc() {
   displayText2 = true;

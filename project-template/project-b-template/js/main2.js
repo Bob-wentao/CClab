@@ -1,7 +1,10 @@
 let snowflakeCounter = 0;
 let scenevideo;
 let displayText = false;
+let displayText2 = false;
 let startTime;
+let startTime2;
+let cry;
 let duration = 3500; // 文字显示持续时间（毫秒）
 let initialFontSize = 40;
 let textColor = 255;
@@ -11,7 +14,7 @@ let snowt = 1
 let snowflakes = []; // array to hold snowflake objects
 let x, y;
 let ball = [];
-let pan5 = 0
+let pan5 = 0;
 let background1, background2;
 let graphic1;
 let gift2y = 0
@@ -57,7 +60,7 @@ let vid;
 let cloud;
 let buttonColor = 200;
 let cloudpan = 0;
-let scenechange = 2;
+let scenechange = 1;
 let calcu = 0;
 let speed = 2;
 let circlepan = 0;
@@ -80,9 +83,10 @@ let giftX4, giftY4, giftSpeed4;
 let snowsound;
 function preload() {
 
-  sleigh = loadImage('video/sleigh.webp')
+  sleigh = loadImage('video/sleigh.png')
   snowsound = loadSound('video/snow1.mp3')
   bacg = loadImage("video/Christ.jpg");
+  cry = loadImage("video/cry.png");
   bacg2 = loadImage("video/Christ2.png");
   santas = loadImage('video/santas.png');
   gift = loadImage('video/gift.png')
@@ -98,7 +102,7 @@ function preload() {
 
 }
 function setup() {
-
+  startTime2 = millis()
   setAppearanceTime();
   let canvas = createCanvas(1000, 700);
   canvas.parent('canvas-container2');
@@ -144,6 +148,17 @@ function draw() {
 
   if (scenechange == 1) {
     snowsound.play()
+    let currentTime = millis();
+
+    // 如果当前时间与开始时间的差值小于2秒（2000毫秒），则显示文字
+    if (currentTime - startTime2 < 5000) {
+      displayText2 = true;
+    } else {
+      displayText2 = false;
+    }
+
+    // 根据 displayText 变量的值来显示或隐藏文字
+
 
     background(255);
 
@@ -153,9 +168,17 @@ function draw() {
 
     // Draw clouds
     drawCloud(383, 152, 30, 20, 10);
-    drawCloud(459, 113, 60, 20, 10);
-    drawCloud(550, 45, 120, 40, 30);
-    image(sock, 170, 202, 200, 250)
+    drawCloud(425, 113, 60, 20, 10);
+    drawCloud(550, 45, 180, 300, 150);
+    image(sock, 150, 230, 100, 150)
+    if (displayText2) {
+      fill(30, 20, 30);
+      textSize(32);
+      text("It is a Christmas Eve ", 520, 70);
+      text("little boy was sleeping ", 520, 100);
+      text("He wants to get gifts ", 520, 130);
+      text("Let's help him !", 520, 160);
+    }
     if (cloudpan == 1) {
       t += 0.1;
       push();
@@ -420,7 +443,7 @@ function draw() {
     if (snowt == 1) {
       snowmanxx += 10
     }
-    image(gift2, snowmanxx, 100 + gift2y, 50, 50);
+    image(gift, snowmanxx, 100 + gift2y, 50, 50);
     if (showImage) {
       gift2y += 5
 
@@ -484,9 +507,11 @@ function draw() {
     }
   }
   if (scenechange == 7) {
-    background(0)
+    background(cry)
     textSize(50)
-    text("Click the button to try again!", 200, 200)
+    fill(0)
+    text("Click the button to try again!", 200, 100)
+
   }
   if (scenechange == 8) {
     scenevideo.loop();
@@ -878,4 +903,12 @@ function setAppearanceTime() {
 }
 function tryagain() {
   scenechange = 1
+}
+function displayTextFunc() {
+  displayText2 = true;
+}
+
+// 隐藏文字函数
+function hideTextFunc() {
+  displayText2 = false;
 }

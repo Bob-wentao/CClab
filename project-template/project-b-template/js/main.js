@@ -39,7 +39,7 @@ class Star {
 
     if (this.z < 1) {
       this.z = width;
-      this.x = random(width);
+      this.x = random(width); z
       this.y = random(height);
       this.pz = this.z;
       this.speed = random(10, 20);

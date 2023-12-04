@@ -104,7 +104,7 @@ function preload() {
 function setup() {
   startTime2 = millis()
   setAppearanceTime();
-  let canvas = createCanvas(900, 650);
+  let canvas = createCanvas(900, 700);
   canvas.parent('canvas-container2');
   sanx = width / 2;
   sany = 0; // 设置santas的sany坐标

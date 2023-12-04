@@ -151,7 +151,7 @@ function draw() {
     let currentTime = millis();
 
     // 如果当前时间与开始时间的差值小于2秒（2000毫秒），则显示文字
-    if (currentTime - startTime2 < 5000) {
+    if (currentTime - startTime2 < 3000) {
       displayText2 = true;
     } else {
       displayText2 = false;

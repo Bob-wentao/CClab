@@ -165,7 +165,7 @@ function draw() {
 
     vid.loop();
     // Draw the video only if the cloudpan flag is not set
-    image(vid, 0, 0, width, height);
+    image(vid, -8, -8, width + 8, height + 8);
 
     // Draw clouds
     drawCloud(383, 152, 30, 20, 10);

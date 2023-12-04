@@ -104,7 +104,7 @@ function preload() {
 function setup() {
   startTime2 = millis()
   setAppearanceTime();
-  let canvas = createCanvas(900, 700);
+  let canvas = createCanvas(900, 650);
   canvas.parent('canvas-container2');
   sanx = width / 2;
   sany = 0; // 设置santas的sany坐标
@@ -429,7 +429,7 @@ function draw() {
 
 
     background(bacg2)
-    image(sock, sockxx, 600, 100, 100)
+    image(sock, sockxx, 550, 100, 100)
     drawSnowman(snowmanxx, 80)
     if (snowmanxx >= width) {
 
@@ -576,7 +576,10 @@ class Snowflake {
   }
 
   display() {
+    push()
+    fill(255)
     ellipse(this.posX, this.posY, this.size);
+    pop()
   }
 }
 

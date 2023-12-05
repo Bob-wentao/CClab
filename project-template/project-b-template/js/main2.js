@@ -104,7 +104,7 @@ function preload() {
 function setup() {
   startTime2 = millis()
   setAppearanceTime();
-  let canvas = createCanvas(900, 650);
+  let canvas = createCanvas(950, 750);
   canvas.parent('canvas-container2');
   sanx = width / 2;
   sany = 0; // 设置santas的sany坐标
@@ -561,12 +561,9 @@ class Snowflake {
   }
 
   update(time) {
-    // x position follows a circle
-    let w = 0.6; // angular speed
+    let w = 0.6;
     let angle = w * time + this.initialangle;
     this.posX = width / 2 + this.radius * sin(angle);
-
-    // different size snowflakes fall at slightly different y speeds
     this.posY += pow(this.size, 0.5);
 
     // delete snowflake if past end of screen
@@ -902,7 +899,7 @@ function hideText() {
   displayText = false;
 }
 function setAppearanceTime() {
-  // 产生一个随机的出现时间（在 1 到 5 秒之间）
+
   let seconds = int(random(9, 11));
   appearanceTime = seconds * 30; // 将秒数转换为帧数（1秒 = 60帧）
 }

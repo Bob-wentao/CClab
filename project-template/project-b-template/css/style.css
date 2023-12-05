@@ -50,13 +50,9 @@ a:hover {
 
 .Title {
   font-size: 100px;
-
   font-family: 'Pacifico', cursive;
-
   margin-bottom: 50px;
-
   background-image: linear-gradient(red, #ff9900, #66ffff);
-
   -webkit-background-clip: text;
   color: transparent;
   display: inline-block;

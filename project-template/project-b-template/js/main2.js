@@ -85,7 +85,7 @@ function preload() {
 
   sleigh = loadImage('video/sleigh.png')
   snowsound = loadSound('video/snow1.mp3')
-  bacg = loadImage("video/Christ.png");
+  bacg = loadImage("video/Christ.jpg");
   cry = loadImage("video/cry.png");
   bacg2 = loadImage("video/Christ2.png");
   santas = loadImage('video/santas.png');
@@ -104,7 +104,7 @@ function preload() {
 function setup() {
   startTime2 = millis()
   setAppearanceTime();
-  let canvas = createCanvas(950, 750);
+  let canvas = createCanvas(950, 700);
   canvas.parent('canvas-container2');
   sanx = width / 2;
   sany = 0; // 设置santas的sany坐标

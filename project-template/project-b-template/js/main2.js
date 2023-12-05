@@ -85,7 +85,7 @@ function preload() {
 
   sleigh = loadImage('video/sleigh.png')
   snowsound = loadSound('video/snow1.mp3')
-  bacg = loadImage("video/Christ.jpg");
+  bacg = loadImage("video/Christ.webp");
   cry = loadImage("video/cry.png");
   bacg2 = loadImage("video/Christ2.png");
   santas = loadImage('video/santas.png');
@@ -107,7 +107,7 @@ function setup() {
   let canvas = createCanvas(950, 700);
   canvas.parent('canvas-container2');
   sanx = width / 2;
-  sany = 0; // 设置santas的sany坐标
+  sany = 0; // 设置santas的sany坐标 
   snowmanxx = random(width)
   // 初始化每个gift的位置和速度
   giftX1 = random(width); // 随机设置sanx坐标
@@ -233,13 +233,22 @@ function draw() {
       }
     }
     if (snowsum >= 50) {
+      push()
+      fill(255)
       ellipse(snowmx, snowmy, 200, 200);
+      pop()
     }
     if (snowsum >= 90) {
+      push()
+      fill(255)
       ellipse(snowmx, snowmy - 125, 150, 150);
+      pop()
     }
     if (snowsum >= 130) {
+      push()
+      fill(255)
       ellipse(snowmx, snowmy - 225, 100, 100);
+      pop()
     }
     if (circlepan >= 1) {
       circleb(snowmx, snowmy - 110);
@@ -254,6 +263,7 @@ function draw() {
       circleb(snowmx - 15, snowmy - 235);
     }
     if (circlepan >= 5) {
+
       circleb(snowmx + 15, snowmy - 235);
     }
 
